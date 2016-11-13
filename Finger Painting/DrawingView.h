@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DrawingView.h
 //  Finger Painting
 //
 //  Created by carmen cheng on 2016-11-11.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface DrawingView : UIView
+@property (nonatomic, strong) NSMutableArray *lines;
 @end
-

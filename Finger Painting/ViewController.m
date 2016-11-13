@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "DrawingView.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *pan;
+@property (weak, nonatomic) IBOutlet DrawingView *drawingView;
+@property (nonatomic) UIBezierPath *draw;
 
 @end
 
@@ -16,14 +20,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.drawingView.lines = [[NSMutableArray alloc]init];
+    
+}
+
+- (IBAction)panGesture:(UIPanGestureRecognizer *)pan {
+   
+    CGPoint currentPoint = [pan locationInView:self.view];
+    
+    if (pan.state == UIGestureRecognizerStateBegan){
+        self.draw = [[UIBezierPath alloc]init];
+        [self.draw moveToPoint:currentPoint];
+        [self.drawingView.lines addObject:self.draw];
+    }
+    else  {
+        [self.draw addLineToPoint:currentPoint];
+        
+    }
+    [self.drawingView setNeedsDisplay];
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
+
+
 
 
 @end
