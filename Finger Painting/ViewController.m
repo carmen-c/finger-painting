@@ -13,7 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *pan;
 @property (weak, nonatomic) IBOutlet DrawingView *drawingView;
 @property (nonatomic) UIBezierPath *draw;
-
+@property (nonatomic) UIColor *currentColor;
 @end
 
 @implementation ViewController
@@ -21,7 +21,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.drawingView.lines = [[NSMutableArray alloc]init];
+    self.drawingView.color = [[NSMutableArray alloc]init];
+    self.currentColor = [UIColor blackColor];
     
+}
+- (IBAction)yellowButton:(id)sender {
+    self.currentColor = [UIColor yellowColor];
+}
+- (IBAction)redButton:(id)sender {
+    self.currentColor = [UIColor redColor];
+}
+- (IBAction)blueButton:(id)sender {
+    self.currentColor = [UIColor blueColor];
+}
+- (IBAction)greenButton:(id)sender {
+    self.currentColor = [UIColor greenColor];
+}
+- (IBAction)purpleButton:(id)sender {
+    self.currentColor = [UIColor purpleColor];
+}
+- (IBAction)cyanButton:(id)sender {
+    self.currentColor = [UIColor cyanColor];
+}
+- (IBAction)orangeButton:(id)sender {
+    self.currentColor = [UIColor orangeColor];
+}
+- (IBAction)blackButton:(id)sender {
+    self.currentColor = [UIColor blackColor];
+}
+- (IBAction)magentaButton:(id)sender {
+    self.currentColor = [UIColor magentaColor];
 }
 
 - (IBAction)panGesture:(UIPanGestureRecognizer *)pan {
@@ -31,6 +60,7 @@
     if (pan.state == UIGestureRecognizerStateBegan){
         self.draw = [[UIBezierPath alloc]init];
         [self.draw moveToPoint:currentPoint];
+        [self.drawingView.color addObject:self.currentColor];
         [self.drawingView.lines addObject:self.draw];
     }
     else  {

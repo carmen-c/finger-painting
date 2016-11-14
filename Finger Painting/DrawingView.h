@@ -10,4 +10,5 @@
 
 @interface DrawingView : UIView
 @property (nonatomic, strong) NSMutableArray *lines;
+@property (nonatomic, strong) NSMutableArray *color;
 @end

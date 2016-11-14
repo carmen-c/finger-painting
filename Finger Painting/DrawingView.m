@@ -10,10 +10,11 @@
 
 @implementation DrawingView
 
+
 - (void)drawRect:(CGRect)rect {
     
     for (int i = 0; i < [self.lines count]; i++) {
-        [[UIColor redColor]setStroke];
+        [self.color[i] setStroke];
         [self.lines[i] stroke];
     }
 
